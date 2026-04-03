@@ -1,0 +1,599 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+header h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Main Layout */
+main {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .balance-section {
+    grid-column: 1 / -1;
+  }
+
+  .transaction-section {
+    grid-column: 1 / -1;
+  }
+
+  .chart-section {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Section Styles - Clear Visual Separation */
+section {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Balance Display - Prominent Visual Hierarchy */
+.balance-section {
+  text-align: center;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.balance-section h2 {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  opacity: 0.95;
+}
+
+.balance-amount {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+/* Form Styles */
+.form-section {
+  padding: 24px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #333;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+/* Submit Button */
+.btn-submit {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #667eea;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-submit:hover {
+  background-color: #5568d3;
+}
+
+.btn-submit:active {
+  transform: scale(0.98);
+}
+
+/* Error Message */
+.error-message {
+  color: #d32f2f;
+  padding: 12px;
+  margin-bottom: 16px;
+  background-color: #ffebee;
+  border-radius: 6px;
+  border-left: 4px solid #d32f2f;
+  font-size: 14px;
+}
+
+/* Transaction List - Scrollable */
+.transaction-section {
+  padding: 24px;
+}
+
+.transaction-list-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 8px;
+  background-color: #fafafa;
+}
+
+.transaction-list-container:empty::before {
+  content: "No transactions yet. Add your first transaction above.";
+  display: block;
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+/* Transaction Item */
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  border-left: 4px solid #e0e0e0;
+  transition: box-shadow 0.2s ease;
+}
+
+.transaction-item:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-item.category-food {
+  border-left-color: #ff6b6b;
+}
+
+.transaction-item.category-transport {
+  border-left-color: #4ecdc4;
+}
+
+.transaction-item.category-fun {
+  border-left-color: #ffe66d;
+}
+
+.transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.transaction-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.transaction-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  color: #666;
+}
+
+.transaction-amount {
+  font-weight: 600;
+  color: #333;
+}
+
+.transaction-category {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.transaction-category.category-food {
+  background-color: #ffe5e5;
+  color: #d32f2f;
+}
+
+.transaction-category.category-transport {
+  background-color: #e0f7f6;
+  color: #00796b;
+}
+
+.transaction-category.category-fun {
+  background-color: #fff9e0;
+  color: #f57c00;
+}
+
+/* Delete Button */
+.btn-delete {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #d32f2f;
+  border: 2px solid #d32f2f;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.btn-delete:hover {
+  background-color: #d32f2f;
+  color: #ffffff;
+}
+
+.btn-delete:active {
+  transform: scale(0.95);
+}
+
+/* Chart Section */
+.chart-section {
+  text-align: center;
+  padding: 24px;
+}
+
+#pie-chart {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Scrollbar Styling */
+.transaction-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transaction-list-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.transaction-list-container::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 4px;
+}
+
+.transaction-list-container::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Accessibility - Focus Visible */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode section {
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode section h2 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .balance-section {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-color: #4a4a4a;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus {
+  border-color: #667eea;
+}
+
+body.dark-mode .transaction-list-container {
+  background-color: #252525;
+  border-color: #4a4a4a;
+}
+
+body.dark-mode .transaction-item {
+  background-color: #3a3a3a;
+}
+
+body.dark-mode .transaction-name {
+  color: #e0e0e0;
+}
+
+body.dark-mode .transaction-meta {
+  color: #b0b0b0;
+}
+
+body.dark-mode .transaction-amount {
+  color: #e0e0e0;
+}
+
+/* Theme Toggle Button */
+header {
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  border-color: #667eea;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #3a3a3a;
+  border-color: #4a4a4a;
+}
+
+/* Monthly Summary Section */
+.summary-section {
+  padding: 24px;
+}
+
+.summary-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.btn-month {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #667eea;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-month:hover {
+  background-color: #5568d3;
+}
+
+.current-month {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+body.dark-mode .current-month {
+  color: #e0e0e0;
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  text-align: center;
+}
+
+body.dark-mode .stat-item {
+  background-color: #3a3a3a;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+body.dark-mode .stat-label {
+  color: #b0b0b0;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #667eea;
+}
+
+/* Custom Category Form */
+.btn-add-category {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #667eea;
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-category:hover {
+  background-color: #667eea;
+  color: #ffffff;
+}
+
+body.dark-mode .btn-add-category {
+  background-color: #3a3a3a;
+  border-color: #667eea;
+}
+
+body.dark-mode .btn-add-category:hover {
+  background-color: #667eea;
+}
+
+.custom-category-form {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  border: 2px solid #e0e0e0;
+}
+
+body.dark-mode .custom-category-form {
+  background-color: #252525;
+  border-color: #4a4a4a;
+}
+
+.custom-category-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-save-category,
+.btn-cancel-category {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-save-category {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.btn-save-category:hover {
+  background-color: #45a049;
+}
+
+.btn-cancel-category {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-cancel-category:hover {
+  background-color: #d0d0d0;
+}
+
+body.dark-mode .btn-cancel-category {
+  background-color: #4a4a4a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .btn-cancel-category:hover {
+  background-color: #5a5a5a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .summary-controls {
+    flex-direction: column;
+  }
+
+  .btn-month {
+    width: 100%;
+  }
+}
